@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public enum EnemyState
 {
     roaming,
-    attacking
+    attacking,
+    gettingShot
 };
 public class EnemyController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class EnemyController : MonoBehaviour
     int randomSpots;
     [SerializeField] float waitTime;
     [SerializeField] float startWaitTime;
+    [SerializeField] float waitLoseTime;
+    [SerializeField] float startLoseWaitTime = 5;
     [Header("currentState")]
     [SerializeField] public EnemyState state;
     //zelda style
@@ -37,6 +40,7 @@ public class EnemyController : MonoBehaviour
         agent.stoppingDistance = 0;
 
         waitTime = startWaitTime;
+        waitLoseTime = startLoseWaitTime;
     }
 
     public void SetNextRoamingDestination()
@@ -72,7 +76,19 @@ public class EnemyController : MonoBehaviour
             //
         }
 
-        if (state == EnemyState.attacking)
+        if (state == EnemyState.gettingShot)
+        {
+            if (waitLoseTime <= 0)
+            {
+                state = EnemyState.roaming;
+                waitLoseTime = startLoseWaitTime;
+            }
+            else if (waitLoseTime > 0)
+            {
+                waitLoseTime -= Time.deltaTime;
+            }
+        }
+        if (state == EnemyState.attacking|| state == EnemyState.gettingShot)
         {
             agent.SetDestination(target.position);
 

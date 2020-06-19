@@ -82,7 +82,16 @@ public class DetectPlayer : MonoBehaviour
         }
         else
         {
-            controller.state = EnemyState.roaming;
+            
+            if (controller.state != EnemyState.gettingShot)
+            {
+                controller.state = EnemyState.roaming;
+            }
+            
         }
+    }
+    private void FixedUpdate()
+    {
+        
     }
 }
