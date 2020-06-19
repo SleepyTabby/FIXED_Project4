@@ -22,16 +22,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] bool roaming;
     [SerializeField] float waitTime;
     [SerializeField] float startWaitTime;
+    [SerializeField] float startLosetime = 10;
+    [SerializeField] float LoseTime;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         randomSpots = Random.Range(0, RoamSpots.Length);
-        if (roaming)
-        {
-agent.SetDestination(RoamSpots[randomSpots].position);
-        }
-        
+        agent.SetDestination(RoamSpots[randomSpots].position);
+        agent.speed = roamingSpeed;
+        agent.stoppingDistance = 0;
+
+        LoseTime = startLosetime;
         waitTime = startWaitTime;
     }
 
@@ -43,7 +45,7 @@ agent.SetDestination(RoamSpots[randomSpots].position);
 
     void Update()
     {
-        //float distance = Vector3.Distance(target.position, transform.position);
+        float distance = Vector3.Distance(target.position, transform.position);
 
         if (health <= 0)
         {
@@ -51,15 +53,31 @@ agent.SetDestination(RoamSpots[randomSpots].position);
             FindObjectOfType<PlayerStatistics>().Kills++;
         }
 
-        //if (distance <= lookRadius)
-        //{
-        //    agent.SetDestination(target.position);
-        //    FaceTarget();
-        //}
-        //if (distance <= agent.stoppingDistance)
-        //{
-        //    shoot.ShootAtPlayer();
-        //}
+        if (distance <= lookRadius)
+        {
+            agent.SetDestination(target.position);
+            roaming = false;
+            agent.stoppingDistance = 3f;
+            agent.speed = 7;
+            LoseTime = startLosetime;
+            FaceTarget();
+        }
+        else
+        {
+            if (LoseTime <= 0)
+            {
+                roaming = true;
+                LoseTime = startLosetime;
+            }
+            else
+            {
+                LoseTime -= Time.deltaTime;
+            }
+        }
+        if (distance <= agent.stoppingDistance)
+        {
+            shoot.ShootAtPlayer();
+        }
         // maak enums 
 
 
@@ -68,7 +86,7 @@ agent.SetDestination(RoamSpots[randomSpots].position);
             Vector3 RoamPos = new Vector3(RoamSpots[randomSpots].position.x, transform.position.y, RoamSpots[randomSpots].position.z);
             agent.speed = roamingSpeed;
             //agent.SetDestination(RoamPos);
-            if (Vector3.Distance(transform.position, RoamPos) < 0.2f)
+            if(transform.position == RoamPos)
             {
                 Debug.Log("ye");
                 if (waitTime <= 0)

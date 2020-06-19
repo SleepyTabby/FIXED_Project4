@@ -162,7 +162,7 @@ public class Gun : MonoBehaviour
     {
         if (!PassiveMode)
         {
-            if (CurrentAmmo >= 0f && isReloading == false)
+            if (CurrentAmmo >= 0f && isReloading == false && currentBullet == "normal")
             {
                 if (LastShot + fireSpeedNormalBullet <= Time.time)
                 {
@@ -173,41 +173,41 @@ public class Gun : MonoBehaviour
 
                 }
             }
-                if (currentBullet == "electricity")
-                {
-                    if (LastShot + fireSpeedElectricBullet <= Time.time)
-                    {
-                        LastShot = Time.time;
-                        Instantiate(bulletElectric, firePoint.position, firePoint.rotation);
-                        CurrentElectricAmmo -= 1f;
-                        adjustElectricAmmo.SetAmmo(CurrentElectricAmmo);
-                        if(CurrentElectricAmmo <= 0)
-                        {
-                            ElectricAmmoLeft = false;
-                            currentBullet = "normal";
-                        }
-                    }
-                }
-                if (currentBullet == "fire")
-                {
-                    if (LastShot + fireSpeedFireBullet <= Time.time)
-                    {
-                        LastShot = Time.time;
-                        Instantiate(bulletFire, firePoint.position, firePoint.rotation);
-                        CurrentFireAmmo -= 1f;
-                        adjustFireAmmo.SetAmmo(CurrentFireAmmo);
-                        if (CurrentFireAmmo <= 0)
-                        {
-                            FireAmmoLeft = false;
-                            currentBullet = "normal";
-                        }
-                    }
-                }
-            }
-            if (CurrentAmmo <= 0f && currentBullet == "normal" && Magazine != 0)
+            if (currentBullet == "electricity")
             {
-                isReloading = true;
+                if (LastShot + fireSpeedElectricBullet <= Time.time)
+                {
+                    LastShot = Time.time;
+                    Instantiate(bulletElectric, firePoint.position, firePoint.rotation);
+                    CurrentElectricAmmo -= 1f;
+                    adjustElectricAmmo.SetAmmo(CurrentElectricAmmo);
+                    if (CurrentElectricAmmo <= 0)
+                    {
+                        ElectricAmmoLeft = false;
+                        currentBullet = "normal";
+                    }
+                }
             }
-        
+            if (currentBullet == "fire")
+            {
+                if (LastShot + fireSpeedFireBullet <= Time.time)
+                {
+                    LastShot = Time.time;
+                    Instantiate(bulletFire, firePoint.position, firePoint.rotation);
+                    CurrentFireAmmo -= 1f;
+                    adjustFireAmmo.SetAmmo(CurrentFireAmmo);
+                    if (CurrentFireAmmo <= 0)
+                    {
+                        FireAmmoLeft = false;
+                        currentBullet = "normal";
+                    }
+                }
+            }
+        }
+        if (CurrentAmmo <= 0f && currentBullet == "normal" && Magazine != 0)
+        {
+            isReloading = true;
+        }
+
     }
 }
