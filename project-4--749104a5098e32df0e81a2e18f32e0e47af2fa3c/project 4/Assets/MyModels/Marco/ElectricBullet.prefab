@@ -109,8 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac970d071fd5c8a42b0b2359b4bcbf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 7
+  projectileSpeed: 40
   MaxDistance: 30
+  fireBulletAccelerationFigures: 0
+  electricBulletAccelerationFigures: 1
 --- !u!198 &3573184152159512438
 ParticleSystem:
   m_ObjectHideFlags: 0

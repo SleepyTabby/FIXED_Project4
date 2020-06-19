@@ -12,14 +12,19 @@ public class DetectFriendlyBullet : MonoBehaviour
         if (col.gameObject.tag == "Bullet")
         {
             DealDamage.LoseSomeHealth(20);
+            DealDamage.state = EnemyState.attacking;
         }
         if (col.gameObject.tag == "FireBullet")
         {
             DealDamage.LoseSomeHealth(15);
+            //add burn dmg met enum
+            DealDamage.state = EnemyState.attacking;
         }
         if (col.gameObject.tag == "ElectricBullet")
         {
             DealDamage.LoseSomeHealth(40);
+            //add stun met enum
+            DealDamage.state = EnemyState.attacking;
         }
     }
 }
