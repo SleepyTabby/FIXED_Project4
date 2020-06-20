@@ -9,9 +9,9 @@ public class AmmoPack : MonoBehaviour
     
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player" && GiveAmmo.Magazine < 2)
+        if (col.gameObject.tag == "Player" )
         {
-            GiveAmmo.GainAmmoByAmmoPack(AmmoGainedByPickingUpAmmoPack);
+            GiveAmmo.totalAmmo += 20;
             Destroy(this.gameObject);
         }
     }
