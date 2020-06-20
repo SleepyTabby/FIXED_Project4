@@ -18,11 +18,10 @@ public class Gun : MonoBehaviour
     private float CurrentAmmo;
     private float CurrentElectricAmmo;
     private float CurrentFireAmmo;
-    public int Magazine = 2;
     
 
     private float CurrentMaxAmmo;
-
+    int currentMags;
     private string CurrentGun;
     float[] ReloadTime = { 100f, 150f, 200f, 250f };
     string currentBullet;
@@ -36,12 +35,16 @@ public class Gun : MonoBehaviour
     public FireAmmoBar adjustFireAmmo;
     public AmmoPool Amunition;
     
+    
+    [Header("gunAmmo")]
     private bool NormalAmmoLeft;
     private bool ElectricAmmoLeft;
     private bool FireAmmoLeft;
+    public int totalAmmo;
     [Header("spray")]
     [Range(0f, 0.5f)]
     [SerializeField] float normalSpray;
+    [SerializeField] int PistolAmmo;
     [Range(0f, 0.5f)]
     [SerializeField] float electricSpray;
     [Range(0f, 0.5f)]
@@ -54,6 +57,7 @@ public class Gun : MonoBehaviour
     
     void Start()
     {
+        currentMags = Mathf.RoundToInt(totalAmmo / PistolAmmo);
         CurrentGun = "Pistol";
         currentBullet = "normal";
         NormalAmmoLeft = true;
@@ -64,7 +68,6 @@ public class Gun : MonoBehaviour
         CurrentFireAmmo = 40f;
         adjustFireAmmo.SetMaxAmmo(40f);
         adjustAmmo.SetMaxAmmo(20f);
-        Amunition.SetMaxMag(Magazine);
         CurrentMaxAmmo = 20f;
         CurrentAmmo = 20f;
         
@@ -73,7 +76,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (Magazine != 0)
+            if (totalAmmo >= 1)
             {
                 CurrentAmmo = 0;
                 adjustAmmo.SetAmmo(CurrentAmmo);
@@ -113,8 +116,6 @@ public class Gun : MonoBehaviour
         {
             if (CurrentGun == "Pistol")
             {
-                //if(Magazine > 0)
-                //{
                 if (ReloadCountDown != ReloadTime[0])
                 {
                     ReloadCountDown++;
@@ -122,35 +123,25 @@ public class Gun : MonoBehaviour
                 }
                 if (ReloadCountDown >= ReloadTime[0])
                 {
-                    CurrentAmmo = 20f;
+                    totalAmmo -= 20;
+                    currentMags = Mathf.RoundToInt(totalAmmo / PistolAmmo);
+                    Amunition.SetMag(currentMags);
+                    if (currentMags >= 1)
+                    {
+                        CurrentAmmo = 20f;
+                    }
+                    else 
+                    {
+                        CurrentAmmo = totalAmmo;
+                    }
                     ReloadCountDown = 0f;
-                    Magazine -= 1;
-                    Amunition.SetMag(Magazine);
                     isReloading = false;
                 }
-                if (CurrentAmmo >= 21f)
-                {
-                    CurrentAmmo = 20f;
-                }
-                //}
             }
         }
     }
     
-    public void GainAmmoByAmmoPack(float ReceiveAmmunition)
-    {
-        //CurrentAmmo = CurrentAmmo + ReceiveAmmunition;
-
-        //if (CurrentAmmo >= 21f)
-        //{
-        //    CurrentAmmo = 20f;
-        //}
-
-        Magazine += 1;
-        Amunition.SetMag(Magazine);
-        //adjustAmmo.SetAmmo(CurrentAmmo);
-
-    }
+    
 
     public void SetCurrentGunAmmo(float maxAmmo, string GunName )
     {
@@ -216,7 +207,7 @@ public class Gun : MonoBehaviour
                 }
             }
         }
-        if (CurrentAmmo <= 0f && currentBullet == "normal" && Magazine != 0)
+        if (CurrentAmmo <= 0f && currentBullet == "normal" && currentMags >= 1)
         {
             isReloading = true;
         }
