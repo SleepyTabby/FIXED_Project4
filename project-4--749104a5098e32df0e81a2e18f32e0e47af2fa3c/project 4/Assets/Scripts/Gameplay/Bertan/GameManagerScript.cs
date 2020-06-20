@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void GameOver()
     {
+        PlayerStatistics.timesDeath++;
         SceneManager.LoadScene(2);
     }
 }
