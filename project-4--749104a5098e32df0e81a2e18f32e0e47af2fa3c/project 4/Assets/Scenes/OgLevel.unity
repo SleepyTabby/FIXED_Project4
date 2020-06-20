@@ -6470,8 +6470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6b76c6f6514bf4fa64144bcd9cee21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 81643052}
-  playerStatistics: {fileID: 0}
 --- !u!114 &81643052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14061,7 +14059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &264883207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14991,6 +14989,7 @@ MonoBehaviour:
   target: {fileID: 1767703477}
   smoothSpeed: 0.125
   offset: {x: 0, y: 10, z: 0}
+  NightVision: {fileID: 0}
 --- !u!1 &298227553
 GameObject:
   m_ObjectHideFlags: 0
@@ -17843,7 +17842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.4, y: -38.9}
+  m_AnchoredPosition: {x: 238.4, y: -41}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425131680
@@ -17858,8 +17857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35b892bd2f3a9c45b525e6559529cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 425131681}
-  playerStatistics: {fileID: 0}
 --- !u!114 &425131681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19451,7 +19448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 1816959076}
-  lookRadius: 5.07
   target: {fileID: 1767703477}
   health: 300
   normalMovementSpeed: 7
@@ -19460,9 +19456,12 @@ MonoBehaviour:
   - {fileID: 839658416}
   - {fileID: 2118978664}
   - {fileID: 582884958}
-  roaming: 0
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
+  state: 0
+  SearchingLight: {fileID: 0}
 --- !u!195 &517558408
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26127,7 +26126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.40002, y: -66.899994}
+  m_AnchoredPosition: {x: 238.40002, y: -69}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &608738067
@@ -26142,8 +26141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6b76c6f6514bf4fa64144bcd9cee21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 608738068}
-  playerStatistics: {fileID: 0}
 --- !u!114 &608738068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26336,12 +26333,16 @@ MonoBehaviour:
   fireSpeedNormalBullet: 0.2
   fireSpeedElectricBullet: 0.3
   fireSpeedFireBullet: 0.14
-  Magazine: 2
   ReloadCountDown: 0
   adjustAmmo: {fileID: 599307520}
   adjustElectricAmmo: {fileID: 1202393412}
   adjustFireAmmo: {fileID: 2034447658}
   Amunition: {fileID: 1732074330}
+  totalAmmo: 0
+  normalSpray: 0
+  PistolAmmo: 0
+  electricSpray: 0
+  fireSpray: 0
 --- !u!4 &620610176
 Transform:
   m_ObjectHideFlags: 0
@@ -37566,15 +37567,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 1727692700}
-  lookRadius: 3.72
   target: {fileID: 1767703477}
   health: 300
   normalMovementSpeed: 7
   roamingSpeed: 0
   RoamSpots: []
-  roaming: 0
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
+  state: 0
+  SearchingLight: {fileID: 0}
 --- !u!195 &713672436
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -38704,6 +38707,7 @@ GameObject:
   - component: {fileID: 766202493}
   - component: {fileID: 766202492}
   - component: {fileID: 766202491}
+  - component: {fileID: 766202495}
   m_Layer: 5
   m_Name: EnemiesLeft
   m_TagString: Untagged
@@ -38727,7 +38731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.4, y: -38.9}
+  m_AnchoredPosition: {x: 238.4, y: -99.100006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766202491
@@ -38801,6 +38805,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766202489}
   m_CullTransparentMesh: 0
+--- !u!114 &766202495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766202489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b10a6df872646d4aafaa1a164cf2920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 766202493}
+  playerStatistics: {fileID: 1767703469}
 --- !u!1 &772281820
 GameObject:
   m_ObjectHideFlags: 0
@@ -45813,7 +45831,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 919967159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744523998ec10634684ee3fd7786f988, type: 3}
+  m_Script: {fileID: 11500000, guid: 3874ae9a7f6184942961f3d401d95160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &920921988
@@ -48058,9 +48076,9 @@ GameObject:
   - component: {fileID: 1040521910}
   - component: {fileID: 1040521915}
   - component: {fileID: 1040521914}
-  - component: {fileID: 1040521913}
   - component: {fileID: 1040521912}
   - component: {fileID: 1040521911}
+  - component: {fileID: 1040521913}
   m_Layer: 5
   m_Name: Death Count
   m_TagString: Untagged
@@ -48084,7 +48102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.4, y: -38.9}
+  m_AnchoredPosition: {x: 238.4, y: -130.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040521911
@@ -48126,9 +48144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1040521909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35b892bd2f3a9c45b525e6559529cb9, type: 3}
+  m_Script: {fileID: 11500000, guid: c76baefdeda3d454a839a2c35b9011b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1040521914}
 --- !u!114 &1040521914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51388,15 +51407,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 903900935}
-  lookRadius: 5.49
   target: {fileID: 1767703477}
   health: 300
   normalMovementSpeed: 7
   roamingSpeed: 0
   RoamSpots: []
-  roaming: 0
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
+  state: 0
+  SearchingLight: {fileID: 0}
 --- !u!195 &1199270886
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -68987,8 +69008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35b892bd2f3a9c45b525e6559529cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1666119367}
-  playerStatistics: {fileID: 0}
 --- !u!114 &1666119367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71073,6 +71092,7 @@ MonoBehaviour:
   AmountOfBullets: 0
   AmountOfBulletsHit: 0
   Kills: 0
+  enemiesLeft: 0
 --- !u!114 &1767703470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73296,15 +73316,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 1970031480}
-  lookRadius: 5.49
   target: {fileID: 1767703477}
   health: 300
   normalMovementSpeed: 7
   roamingSpeed: 0
   RoamSpots: []
-  roaming: 0
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
+  state: 0
+  SearchingLight: {fileID: 0}
 --- !u!195 &1914503429
 NavMeshAgent:
   m_ObjectHideFlags: 0
