@@ -15337,6 +15337,7 @@ MonoBehaviour:
   target: {fileID: 1767703477}
   smoothSpeed: 0.125
   offset: {x: 0, y: 10, z: 0}
+  NightVision: {fileID: 0}
 --- !u!1 &298227553
 GameObject:
   m_ObjectHideFlags: 0
@@ -19811,6 +19812,8 @@ MonoBehaviour:
   - {fileID: 582884958}
   waitTime: 0
   startWaitTime: 3
+  waitLoseTime: 0
+  startLoseWaitTime: 5
   state: 0
   SearchingLight: {fileID: 0}
 --- !u!195 &517558408
@@ -31517,13 +31520,16 @@ MonoBehaviour:
   fireSpeedNormalBullet: 0.2
   fireSpeedElectricBullet: 0.3
   fireSpeedFireBullet: 0.14
-  Magazine: 2
+  CurrentAmmo: 0
+  currentMags: 0
   ReloadCountDown: 0
   adjustAmmo: {fileID: 599307520}
   adjustElectricAmmo: {fileID: 1202393412}
   adjustFireAmmo: {fileID: 2034447658}
   Amunition: {fileID: 1732074330}
+  totalAmmo: 0
   normalSpray: 0.07
+  PistolAmmo: 0
   electricSpray: 0.04
   fireSpray: 0.11
 --- !u!4 &620610176
@@ -38118,6 +38124,8 @@ MonoBehaviour:
   - {fileID: 2130748785}
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
   state: 0
   SearchingLight: {fileID: 0}
 --- !u!195 &713672436
@@ -50428,6 +50436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Blue_Keycard
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c8d37f5b547458f43b03cf4dc71286f5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d37f5b547458f43b03cf4dc71286f5, type: 3}
 --- !u!1 &1128014484
@@ -52007,6 +52020,8 @@ MonoBehaviour:
   - {fileID: 94020050}
   waitTime: 0
   startWaitTime: 3
+  waitLoseTime: 0
+  startLoseWaitTime: 5
   state: 0
   SearchingLight: {fileID: 0}
 --- !u!195 &1199270886
@@ -74265,6 +74280,8 @@ MonoBehaviour:
   - {fileID: 103842163}
   waitTime: 0
   startWaitTime: 0
+  waitLoseTime: 0
+  startLoseWaitTime: 5
   state: 0
   SearchingLight: {fileID: 0}
 --- !u!195 &1914503429
