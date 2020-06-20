@@ -39,6 +39,13 @@ public class Gun : MonoBehaviour
     private bool NormalAmmoLeft;
     private bool ElectricAmmoLeft;
     private bool FireAmmoLeft;
+    [Header("spray")]
+    [Range(0f, 0.5f)]
+    [SerializeField] float normalSpray;
+    [Range(0f, 0.5f)]
+    [SerializeField] float electricSpray;
+    [Range(0f, 0.5f)]
+    [SerializeField] float fireSpray;
 
     void Awake()
     {
@@ -108,23 +115,23 @@ public class Gun : MonoBehaviour
             {
                 //if(Magazine > 0)
                 //{
-                    if (ReloadCountDown != ReloadTime[0])
-                    {
-                        ReloadCountDown++;
-                        adjustAmmo.SetAmmo(ReloadCountDown / 5f);
-                    }
-                    if (ReloadCountDown >= ReloadTime[0])
-                    {
-                        CurrentAmmo = 20f;
-                        ReloadCountDown = 0f;
-                        Magazine -= 1;
-                        Amunition.SetMag(Magazine);
-                        isReloading = false;
-                    }
-                    if (CurrentAmmo >= 21f)
-                    {
-                        CurrentAmmo = 20f;
-                    }
+                if (ReloadCountDown != ReloadTime[0])
+                {
+                    ReloadCountDown++;
+                    adjustAmmo.SetAmmo(ReloadCountDown / 5f);
+                }
+                if (ReloadCountDown >= ReloadTime[0])
+                {
+                    CurrentAmmo = 20f;
+                    ReloadCountDown = 0f;
+                    Magazine -= 1;
+                    Amunition.SetMag(Magazine);
+                    isReloading = false;
+                }
+                if (CurrentAmmo >= 21f)
+                {
+                    CurrentAmmo = 20f;
+                }
                 //}
             }
         }
@@ -162,52 +169,57 @@ public class Gun : MonoBehaviour
     {
         if (!PassiveMode)
         {
-            if (CurrentAmmo >= 0f && isReloading == false)
+            if (CurrentAmmo >= 0f && isReloading == false && currentBullet == "normal")
             {
                 if (LastShot + fireSpeedNormalBullet <= Time.time)
                 {
+                    float randomSpray = Random.Range(firePoint.rotation.y - normalSpray, firePoint.rotation.y + normalSpray);
+                    Quaternion spray = new Quaternion(firePoint.rotation.x, randomSpray, firePoint.rotation.z, firePoint.rotation.w);
                     LastShot = Time.time;
-                    Instantiate(bulletNormal, firePoint.position, firePoint.rotation);
+                    Instantiate(bulletNormal, firePoint.position, spray);
                     CurrentAmmo -= 1f;
                     adjustAmmo.SetAmmo(CurrentAmmo);
-
                 }
             }
-                if (currentBullet == "electricity")
-                {
-                    if (LastShot + fireSpeedElectricBullet <= Time.time)
-                    {
-                        LastShot = Time.time;
-                        Instantiate(bulletElectric, firePoint.position, firePoint.rotation);
-                        CurrentElectricAmmo -= 1f;
-                        adjustElectricAmmo.SetAmmo(CurrentElectricAmmo);
-                        if(CurrentElectricAmmo <= 0)
-                        {
-                            ElectricAmmoLeft = false;
-                            currentBullet = "normal";
-                        }
-                    }
-                }
-                if (currentBullet == "fire")
-                {
-                    if (LastShot + fireSpeedFireBullet <= Time.time)
-                    {
-                        LastShot = Time.time;
-                        Instantiate(bulletFire, firePoint.position, firePoint.rotation);
-                        CurrentFireAmmo -= 1f;
-                        adjustFireAmmo.SetAmmo(CurrentFireAmmo);
-                        if (CurrentFireAmmo <= 0)
-                        {
-                            FireAmmoLeft = false;
-                            currentBullet = "normal";
-                        }
-                    }
-                }
-            }
-            if (CurrentAmmo <= 0f && currentBullet == "normal" && Magazine != 0)
+            if (currentBullet == "electricity")
             {
-                isReloading = true;
+                if (LastShot + fireSpeedElectricBullet <= Time.time)
+                {
+                    float randomSpray = Random.Range(firePoint.rotation.y - electricSpray, firePoint.rotation.y + electricSpray);
+                    Quaternion spray = new Quaternion(firePoint.rotation.x, randomSpray, firePoint.rotation.z, firePoint.rotation.w);
+                    LastShot = Time.time;
+                    Instantiate(bulletElectric, firePoint.position, spray);
+                    CurrentElectricAmmo -= 1f;
+                    adjustElectricAmmo.SetAmmo(CurrentElectricAmmo);
+                    if (CurrentElectricAmmo <= 0)
+                    {
+                        ElectricAmmoLeft = false;
+                        currentBullet = "normal";
+                    }
+                }
             }
-        
+            if (currentBullet == "fire")
+            {
+                if (LastShot + fireSpeedFireBullet <= Time.time)
+                {
+                    float randomSpray = Random.Range(firePoint.rotation.y - fireSpray, firePoint.rotation.y + fireSpray);
+                    Quaternion spray = new Quaternion(firePoint.rotation.x, randomSpray, firePoint.rotation.z, firePoint.rotation.w);
+                    LastShot = Time.time;
+                    Instantiate(bulletFire, firePoint.position, spray);
+                    CurrentFireAmmo -= 1f;
+                    adjustFireAmmo.SetAmmo(CurrentFireAmmo);
+                    if (CurrentFireAmmo <= 0)
+                    {
+                        FireAmmoLeft = false;
+                        currentBullet = "normal";
+                    }
+                }
+            }
+        }
+        if (CurrentAmmo <= 0f && currentBullet == "normal" && Magazine != 0)
+        {
+            isReloading = true;
+        }
+
     }
 }
