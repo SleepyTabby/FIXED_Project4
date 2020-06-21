@@ -77,7 +77,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (totalAmmo != 0)
+            if (totalAmmo >= 0)
             {
                 CurrentAmmo = 0;
                 adjustAmmo.SetAmmo(CurrentAmmo);
@@ -212,7 +212,7 @@ public class Gun : MonoBehaviour
                 }
             }
         }
-        if (CurrentAmmo <= 0f && currentBullet == "normal") 
+        if (CurrentAmmo <= 0f && currentBullet == "normal" && totalAmmo > 0) 
         {
             isReloading = true;
         }

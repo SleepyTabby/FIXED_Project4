@@ -15,7 +15,6 @@ public class EnemyController : MonoBehaviour
 
     [Header("agentSettings")]
     [SerializeField] Transform target;
-    public int health = 50;
     NavMeshAgent agent;
     [SerializeField] float normalMovementSpeed = 7;
     [Header("roamingSettings")]
@@ -31,6 +30,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public EnemyState state;
     //zelda style
     [SerializeField] private GameObject SearchingLight;
+    public int Enemyhealth = 50;
+    public EnemyHealthBar enemyHealth;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class EnemyController : MonoBehaviour
         SetNextRoamingDestination();
         agent.speed = roamingSpeed;
         agent.stoppingDistance = 0;
+        enemyHealth.SetEnemyMaxHealth(Enemyhealth);
 
         waitTime = startWaitTime;
         waitLoseTime = startLoseWaitTime;
@@ -60,20 +62,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void LoseSomeHealth(int hp)
-    {
-        health -= hp;
-        FindObjectOfType<PlayerStatistics>().AmountOfBulletsHit++;
-    }
-
     void Update()
     {
-        if (health <= 0)
+        if (Enemyhealth <= 0)
         {
             Destroy(this.gameObject);
-            //bertan
-            FindObjectOfType<PlayerStatistics>().Kills++;
-            //
         }
 
         if (state == EnemyState.gettingShot)
@@ -124,7 +117,6 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
 
     void FaceTarget()
     {
