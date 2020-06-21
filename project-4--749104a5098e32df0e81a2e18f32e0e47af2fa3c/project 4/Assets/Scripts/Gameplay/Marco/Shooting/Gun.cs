@@ -15,13 +15,13 @@ public class Gun : MonoBehaviour
     [SerializeField] private float fireSpeedFireBullet;
 
     private bool PassiveMode;
-    private float CurrentAmmo;
+    public float CurrentAmmo;
     private float CurrentElectricAmmo;
     private float CurrentFireAmmo;
     
 
     private float CurrentMaxAmmo;
-    int currentMags;
+    [SerializeField]int currentMags;
     private string CurrentGun;
     float[] ReloadTime = { 100f, 150f, 200f, 250f };
     string currentBullet;
@@ -57,6 +57,7 @@ public class Gun : MonoBehaviour
     
     void Start()
     {
+        
         currentMags = Mathf.RoundToInt(totalAmmo / PistolAmmo);
         CurrentGun = "Pistol";
         currentBullet = "normal";
@@ -76,7 +77,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (totalAmmo >= 1)
+            if (totalAmmo >= 0)
             {
                 CurrentAmmo = 0;
                 adjustAmmo.SetAmmo(CurrentAmmo);
@@ -126,14 +127,14 @@ public class Gun : MonoBehaviour
                     totalAmmo -= 20;
                     currentMags = Mathf.RoundToInt(totalAmmo / PistolAmmo);
                     Amunition.SetMag(currentMags);
-                    if (currentMags >= 1)
+                    if (currentMags != 0)
                     {
                         CurrentAmmo = 20f;
                     }
-                    else 
-                    {
-                        CurrentAmmo = totalAmmo;
-                    }
+                    //else
+                    //{
+                    //    CurrentAmmo = totalAmmo;
+                    //}
                     ReloadCountDown = 0f;
                     isReloading = false;
                 }
@@ -160,13 +161,17 @@ public class Gun : MonoBehaviour
     {
         if (!PassiveMode)
         {
+
             if (CurrentAmmo >= 0f && isReloading == false && currentBullet == "normal")
             {
                 if (LastShot + fireSpeedNormalBullet <= Time.time)
                 {
+                    //spray
                     float randomSpray = Random.Range(firePoint.rotation.y - normalSpray, firePoint.rotation.y + normalSpray);
                     Quaternion spray = new Quaternion(firePoint.rotation.x, randomSpray, firePoint.rotation.z, firePoint.rotation.w);
+                    //time
                     LastShot = Time.time;
+                    //fire bullet
                     Instantiate(bulletNormal, firePoint.position, spray);
                     CurrentAmmo -= 1f;
                     adjustAmmo.SetAmmo(CurrentAmmo);
@@ -207,7 +212,7 @@ public class Gun : MonoBehaviour
                 }
             }
         }
-        if (CurrentAmmo <= 0f && currentBullet == "normal" && currentMags >= 1)
+        if (CurrentAmmo <= 0f && currentBullet == "normal" && totalAmmo > 0) 
         {
             isReloading = true;
         }

@@ -5,26 +5,32 @@ using UnityEngine;
 public class DetectFriendlyBullet : MonoBehaviour
 {
     public EnemyController DealDamage;
-    public Projectile Bullet;
+    public EnemyHealthBar enemyHealth;
     void OnTriggerEnter(Collider col)
     {
 
         if (col.gameObject.tag == "Bullet")
         {
-            DealDamage.LoseSomeHealth(20);
+            DealDamage.Enemyhealth -= 20;
             DealDamage.state = EnemyState.gettingShot;
+            enemyHealth.SetEnemyHealth(DealDamage.Enemyhealth);
+            FindObjectOfType<PlayerStatistics>().AmountOfBulletsHit++;
         }
         if (col.gameObject.tag == "FireBullet")
         {
-            DealDamage.LoseSomeHealth(15);
             //add burn dmg met enum
+            DealDamage.Enemyhealth -= 15;
             DealDamage.state = EnemyState.gettingShot;
+            enemyHealth.SetEnemyHealth(DealDamage.Enemyhealth);
+            FindObjectOfType<PlayerStatistics>().AmountOfBulletsHit++;
         }
         if (col.gameObject.tag == "ElectricBullet")
         {
-            DealDamage.LoseSomeHealth(40);
             //add stun met enum
+            DealDamage.Enemyhealth -= 40;
             DealDamage.state = EnemyState.gettingShot;
+            enemyHealth.SetEnemyHealth(DealDamage.Enemyhealth);
+            FindObjectOfType<PlayerStatistics>().AmountOfBulletsHit++;
         }
     }
 }
