@@ -51885,7 +51885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Healthslider: {fileID: 1222240487}
-  gameOver: {fileID: 919967163}
+  gameOver: {fileID: 0}
 --- !u!114 &1222240487
 MonoBehaviour:
   m_ObjectHideFlags: 0
