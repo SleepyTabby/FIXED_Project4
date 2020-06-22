@@ -9,10 +9,13 @@ public class MiniGunPressurePlate : MonoBehaviour
     [SerializeField] bool MakeItTrue;
     private void OnCollisionEnter(Collision col)
     {
-        miniGun.pressurePlate = MakeItTrue;
-        if (!MakeItTrue)
+        if(col.gameObject.tag == "Player")
         {
-            camera.offset = new Vector3(0, 7, 0);
+            miniGun.pressurePlate = MakeItTrue;
+            if (!MakeItTrue)
+            {
+                camera.offset = new Vector3(0, 7, 0);
+            }
         }
     }
 
