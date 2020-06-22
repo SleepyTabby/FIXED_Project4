@@ -14,6 +14,6 @@ public class DeathReason : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "A " + gameObject.name + "killed you";
+        text.text = "An AI killed you!";
     }
 }

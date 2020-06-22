@@ -8,10 +8,19 @@ public class HealthBarScript : MonoBehaviour
     public Slider Healthslider;
     public GameManagerScript gameOver;
 
+    float timer = 3;
+    public float countdown;
+
+    void Start()
+    {
+        countdown = timer;
+    }
     void Update()
     {
+        
         if (Healthslider.value <= 0)
         {
+            countdown -= Time.deltaTime;
             gameOver.GameOver();
         }
     }
