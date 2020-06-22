@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float fireSpeed;
     [SerializeField] private Transform[] centralFiringPoints;
     [SerializeField] private Transform[] UnevencentralFiringPoints;
+    [SerializeField] private Transform[] SlightcentralFiringPoints;
     [SerializeField] private GameObject projectile;
     //[Range(0, 16)] 
     //[SerializeField] private int fireingAngle;
@@ -53,13 +54,13 @@ public class Boss : MonoBehaviour
     }
     void Update()
     {
-        //PatternOne();
+        PatternOne();
     }
     public bool E;
     void PatternOne()
-    { 
-        ////if (E)
-        //{
+    {
+        if (E)
+        {
             if (TimeBetweenShots + fireSpeed <= Time.time)
             {
                 //even
@@ -81,8 +82,25 @@ public class Boss : MonoBehaviour
                 Instantiate(projectile, UnevencentralFiringPoints[6].position, UnevencentralFiringPoints[6].rotation);
                 Instantiate(projectile, UnevencentralFiringPoints[7].position, UnevencentralFiringPoints[7].rotation);
                 TimeBetweenShots = Time.time; 
+                //slight
+                Instantiate(projectile, SlightcentralFiringPoints[0].position, SlightcentralFiringPoints[0].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[1].position, SlightcentralFiringPoints[1].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[2].position, SlightcentralFiringPoints[2].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[3].position, SlightcentralFiringPoints[3].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[4].position, SlightcentralFiringPoints[4].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[5].position, SlightcentralFiringPoints[5].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[6].position, SlightcentralFiringPoints[6].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[7].position, SlightcentralFiringPoints[7].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[8].position, SlightcentralFiringPoints[8].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[9].position, SlightcentralFiringPoints[9].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[10].position, SlightcentralFiringPoints[10].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[11].position, SlightcentralFiringPoints[11].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[12].position, SlightcentralFiringPoints[12].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[13].position, SlightcentralFiringPoints[13].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[14].position, SlightcentralFiringPoints[14].rotation);
+                Instantiate(projectile, SlightcentralFiringPoints[15].position, SlightcentralFiringPoints[15].rotation);
                 E = false;
             }
-        //}
     }
+}
 }
