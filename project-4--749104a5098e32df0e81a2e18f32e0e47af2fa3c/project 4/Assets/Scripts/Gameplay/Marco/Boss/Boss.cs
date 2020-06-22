@@ -53,7 +53,7 @@ public class Boss : MonoBehaviour
     }
     void Update()
     {
-        PatternOne();
+        //PatternOne();
     }
     public bool E;
     void PatternOne()
