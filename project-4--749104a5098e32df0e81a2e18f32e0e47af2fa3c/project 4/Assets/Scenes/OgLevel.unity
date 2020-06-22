@@ -22136,6 +22136,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 848156162}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &546244203
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22391,6 +22402,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 848156162}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!222 &555642837
 CanvasRenderer:
@@ -49246,6 +49268,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 264883206}
   OptionsScreen: {fileID: 311414050}
   moreOptionsScreen: {fileID: 2091330826}
+  Statics: {fileID: 848156162}
 --- !u!114 &919967163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49261,6 +49284,7 @@ MonoBehaviour:
   HealthZero: {fileID: 1222240486}
   DeathReason: {fileID: 1381212489}
   PlayerGone: {fileID: 1767703467}
+  Statics: {fileID: 0}
 --- !u!114 &919967164
 MonoBehaviour:
   m_ObjectHideFlags: 0
