@@ -7,6 +7,8 @@ public class SettingsMenu : MonoBehaviour
 {
     Resolution[] resolutions;
     public Dropdown resolutionDropdown;
+
+    float rbgValue = 0.5f;
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -32,6 +34,11 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
+    //public void Brightness()
+    //{
+    //    rbgValue = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, 90, 100, 30), rbgValue, 0f, 1.0f);
+    //    RenderSettings.ambientLight = new Color(rbgValue, rbgValue, 1);
+    //}
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
