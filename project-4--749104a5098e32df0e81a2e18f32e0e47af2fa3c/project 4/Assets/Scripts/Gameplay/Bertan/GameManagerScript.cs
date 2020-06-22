@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField] public GameObject DeathReason;
     [SerializeField] public GameObject PlayerGone;
+    [SerializeField] public GameObject Statics;
     void Start()
     {
 
