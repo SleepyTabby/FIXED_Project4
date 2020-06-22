@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] float normalMovementSpeed = 7;
     [Header("roamingSettings")]
-    [Range(0.5f, 5f)]
+    [Range(0.5f, 50f)]
     [SerializeField] float roamingSpeed;
     [SerializeField] Transform[] RoamSpots;
     int randomSpots;
