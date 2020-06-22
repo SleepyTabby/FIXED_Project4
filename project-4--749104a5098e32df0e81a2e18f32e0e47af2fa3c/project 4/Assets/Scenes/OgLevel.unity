@@ -33358,9 +33358,9 @@ MonoBehaviour:
   adjustElectricAmmo: {fileID: 1202393412}
   adjustFireAmmo: {fileID: 2034447658}
   Amunition: {fileID: 1732074330}
-  totalAmmo: 0
+  totalAmmo: 80
   normalSpray: 0.07
-  PistolAmmo: 0
+  PistolAmmo: 20
   electricSpray: 0.04
   fireSpray: 0.11
 --- !u!4 &620610176
