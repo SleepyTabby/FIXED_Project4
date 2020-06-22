@@ -5,13 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+
+    public HealthBarScript HealthZero;
+
+    [SerializeField] public GameObject DeathReason;
+    [SerializeField] public GameObject PlayerGone;
     void Start()
     {
 
     }
+    void update()
+    {
+
+
+    }
     public void GameOver()
     {
-        PlayerStatistics.timesDeath++;
-        SceneManager.LoadScene(2);
+        if (HealthZero.Healthslider.value <= 0)
+        {
+            DeathReason.SetActive(true);
+            Destroy(PlayerGone);
+            //Time.timeScale = 0f;
+            print("worked");
+            if (HealthZero.countdown <= 0)
+            {
+                print("DAMN U NOOB");
+                PlayerStatistics.timesDeath++;  
+                SceneManager.LoadScene(2);
+            }
+        }
+
     }
 }
