@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class KeyBindScript : MonoBehaviour
 {
-    private Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
+    public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
 
     public Text up, left, down, right;
 
@@ -29,26 +29,8 @@ public class KeyBindScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keys["Up"]))
-        {
-            float hor = Input.GetAxis("Vertical");
-            hor = +1;
-        }
-        if (Input.GetKeyDown(keys["Left"]))
-        {
-            float hor = Input.GetAxis("Horizontal");
-            hor = -1;
-        }
-        if (Input.GetKeyDown(keys["Down"]))
-        {
-            float hor = Input.GetAxis("Vertical");
-            hor = -1;
-        }
-        if (Input.GetKeyDown(keys["Right"]))
-        {
-            float hor = Input.GetAxis("Horizontal");
-            hor = +1;
-        }
+       
+
 
     }
     void OnGUI()
@@ -59,6 +41,7 @@ public class KeyBindScript : MonoBehaviour
             if (e.isKey)
             {
                 keys[currentKey.name] = e.keyCode;
+                Debug.Log(keys[currentKey.name]);
                 currentKey.transform.GetChild(0).GetComponent<Text>().text = e.keyCode.ToString();
                 currentKey.GetComponent<Image>().color = normal;
                 currentKey = null;

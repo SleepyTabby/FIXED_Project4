@@ -17198,7 +17198,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350081644}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 960f860dd3fd09446ab9ebf81a7ada10, type: 3}
@@ -66152,8 +66152,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503504333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 391.97632, y: 280.23138, z: -1.3555179}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 391.97644, y: 280.23138, z: -1.355526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77593,6 +77593,7 @@ GameObject:
   - component: {fileID: 1767703469}
   - component: {fileID: 1767703468}
   - component: {fileID: 1767703478}
+  - component: {fileID: 1767703479}
   m_Layer: 0
   m_Name: Playercharacter
   m_TagString: Player
@@ -77642,6 +77643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  kbs: {fileID: 1503504334}
 --- !u!114 &1767703471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77780,6 +77782,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 620610174}
   gunFloor: {fileID: 606926176}
+--- !u!114 &1767703479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767703467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bc67900980d88469860289819a3a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 0}
+  left: {fileID: 0}
+  down: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &1770401030
 GameObject:
   m_ObjectHideFlags: 0
