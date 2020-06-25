@@ -12,11 +12,11 @@ public class dropGun : MonoBehaviour
 
     public Transform playerPos;
 
-    bool dropallow = true;
+    public bool dropallow = true;
     void Update()
     {
         //Vector3 posmore = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        if (Input.GetKeyDown(KeyCode.G) && dropallow)
+        if (Input.GetKeyDown(KeyCode.G) && dropallow == true)
         {
             gunFloor.SetActive(true);
             Fullgun.SetActive(true);
@@ -24,6 +24,7 @@ public class dropGun : MonoBehaviour
             gun.SetActive(false);
             Fullgun.SetActive(false);
             gunFloor.SetActive(false);
+            dropallow = false;
             //Destroy(gun);
         }
     }

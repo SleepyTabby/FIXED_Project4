@@ -33207,6 +33207,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 37573128}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &606926177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1373555715896022971, guid: aa134924add1a8b4ea8f5c06d7c1d8ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 37573128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &606926180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33221,6 +33227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 620610174}
   gunFloor: {fileID: 606926176}
+  dg: {fileID: 0}
 --- !u!65 &606926181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33459,7 +33466,6 @@ GameObject:
   - component: {fileID: 620610177}
   - component: {fileID: 620610175}
   - component: {fileID: 620610180}
-  - component: {fileID: 620610181}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -33590,21 +33596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 620610174}
   gunFloor: {fileID: 1771315130}
---- !u!114 &620610181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620610174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e978945308409f34ea80f6dff7133c42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 620610174}
-  gunFloor: {fileID: 1771315130}
-  playerPos: {fileID: 1767703477}
+  dg: {fileID: 1767703478}
 --- !u!1 &621281665
 GameObject:
   m_ObjectHideFlags: 0
@@ -77623,9 +77615,9 @@ GameObject:
   - component: {fileID: 1767703470}
   - component: {fileID: 1767703469}
   - component: {fileID: 1767703468}
-  - component: {fileID: 1767703478}
   - component: {fileID: 1767703479}
   - component: {fileID: 1767703480}
+  - component: {fileID: 1767703478}
   m_Layer: 0
   m_Name: Playercharacter
   m_TagString: Player
@@ -77807,14 +77799,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767703467}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e978945308409f34ea80f6dff7133c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 620610174}
   gunFloor: {fileID: 606926176}
-  playerPos: {fileID: 0}
+  Fullgun: {fileID: 1771315130}
+  gunPos: {fileID: 606926177}
+  playerPos: {fileID: 1767703477}
+  dropallow: 1
 --- !u!114 &1767703479
 MonoBehaviour:
   m_ObjectHideFlags: 0
