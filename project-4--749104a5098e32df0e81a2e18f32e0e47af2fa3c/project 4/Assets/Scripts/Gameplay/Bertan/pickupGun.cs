@@ -21,6 +21,7 @@ public class pickupGun : MonoBehaviour
     {
         gun.SetActive(true);
         gunFloor.SetActive(false);
+        print("pick up gun");
 
     }
 }

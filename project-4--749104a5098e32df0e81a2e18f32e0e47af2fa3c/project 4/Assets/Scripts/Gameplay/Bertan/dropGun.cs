@@ -1,24 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class dropGun : MonoBehaviour
 {
-    [SerializeField] public GameObject gun;
-    [SerializeField] public GameObject gunFloor;
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] GameObject gun;
+    [SerializeField] GameObject gunFloor;
+    [SerializeField] GameObject Fullgun;
+    [SerializeField] Transform gunPos;
 
-    }
+    public Transform playerPos;
 
-    // Update is called once per frame
+    bool dropallow = true;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        //Vector3 posmore = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        if (Input.GetKeyDown(KeyCode.G) && dropallow)
         {
-            gun.SetActive(false);
             gunFloor.SetActive(true);
+            Fullgun.SetActive(true);
+            Instantiate(gunFloor, (transform.position + (transform.forward * 2)), Quaternion.identity);
+            gun.SetActive(false);
+            Fullgun.SetActive(false);
+            gunFloor.SetActive(false);
+            //Destroy(gun);
         }
     }
 }
