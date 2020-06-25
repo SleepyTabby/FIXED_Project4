@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2661761430768150590}
   - component: {fileID: 2661761430768150591}
   - component: {fileID: 2661761430768150584}
-  - component: {fileID: 2661761430768150585}
   - component: {fileID: 2661761430768150586}
   - component: {fileID: 360647502121117589}
+  - component: {fileID: 622578744738930152}
   m_Layer: 0
   m_Name: BossBullet
   m_TagString: FireBullet
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2661761430768150585
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661761430768150587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.51
-  m_Center: {x: 0.025411678, y: 0, z: 0}
 --- !u!114 &2661761430768150586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +160,20 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &622578744738930152
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661761430768150587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6341154
+  m_Height: 3.4704454
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -1.2136186}
 --- !u!1 &5831254440529383775
 GameObject:
   m_ObjectHideFlags: 0
