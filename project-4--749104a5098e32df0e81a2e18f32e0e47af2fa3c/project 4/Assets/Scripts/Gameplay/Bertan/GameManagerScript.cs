@@ -32,7 +32,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 print("DAMN U NOOB");
                 PlayerStatistics.timesDeath++;  
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene("EndScene");
             }
         }
 
