@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class lift : MonoBehaviour
 {
-    float timer = 5f;
+    public float timer;
     void Start()
     {
-        
+        timer = 4.5f;   
     }
     void Update()
     {
         timer -= Time.deltaTime;
 
-        if (Time.deltaTime <= 0)
+        if (timer <= 0)
         {
             SceneManager.LoadScene(+1);
         }
