@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ArmorBar : MonoBehaviour
 {
     public Slider Armorslider;
-    public float RemainingArmor;
+    public float RemainingArmor = 50;
 
     void Start()
     {
