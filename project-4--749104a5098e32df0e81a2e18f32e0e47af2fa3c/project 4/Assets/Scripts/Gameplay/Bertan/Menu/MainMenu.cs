@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("OgLevel");
         Time.timeScale = 1f;
         Debug.Log("Loaded scene 1 - Game Scene");
     }

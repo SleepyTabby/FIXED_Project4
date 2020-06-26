@@ -14,8 +14,6 @@ public class PlayerStatistics : MonoBehaviour
 
     public float Accuracy()
     {
-
-
         if (AmountOfBullets == 0 && AmountOfBulletsHit == 0)
         {
             return 100f;
