@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 622578744738930152}
   m_Layer: 0
   m_Name: BossBullet
-  m_TagString: FireBullet
+  m_TagString: BulletFromBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661761430768150587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.817, y: 0.95, z: 32.81}
-  m_LocalScale: {x: 0.39222476, y: 0.39222476, z: 0.39222476}
+  m_LocalPosition: {x: -0.817, y: 0.95, z: 32.775}
+  m_LocalScale: {x: 0.34923002, y: 0.34923002, z: 0.34923002}
   m_Children:
   - {fileID: 6440770919860952433}
   m_Father: {fileID: 0}
@@ -168,12 +168,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661761430768150587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.6341154
-  m_Height: 3.4704454
+  m_Radius: 0.29
+  m_Height: 1.8125484
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -1.2136186}
+  m_Center: {x: 0, y: 0, z: -0.45709553}
 --- !u!1 &5831254440529383775
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,10 @@ public class EnemyProjectile : MonoBehaviour
         firingPoint = transform;
     }
 
-    
+    private void DestroyThisBullet()
+    {
+        Destroy(this.gameObject);
+    }
     void Update()
     {
         //
@@ -36,7 +39,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            Destroy(this.gameObject);
+            DestroyThisBullet();
         }
     }
 }

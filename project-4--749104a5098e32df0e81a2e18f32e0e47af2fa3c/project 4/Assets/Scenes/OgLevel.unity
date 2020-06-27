@@ -8156,7 +8156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  desiredAngle: 180
+  desiredAngle: 0
   neutralAngle: 90
   angle: 0
   direction: {x: 0, y: 0, z: 0}
@@ -33433,6 +33433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 620610174}
   gunFloor: {fileID: 606926176}
+  dg: {fileID: 0}
 --- !u!65 &606926181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49769,7 +49770,7 @@ MonoBehaviour:
   greenKeyCard: {fileID: 1506359675}
   BlueKey: 0
   blueKeyCard: {fileID: 1577360495}
-  door: {fileID: 0}
+  door: {fileID: 919967165}
 --- !u!114 &919967162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78500,7 +78501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DealDamage: {fileID: 1649773964}
   CheckArmorDMG: {fileID: 626147644}
-  enemy: {fileID: 1323782716872491446, guid: c26ccc0b181ae4c4dab0305b98d3bbad, type: 3}
 --- !u!114 &1767703472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78627,6 +78627,7 @@ MonoBehaviour:
   Fullgun: {fileID: 81109771}
   gunPos: {fileID: 1335030309}
   playerPos: {fileID: 1767703477}
+  dropallow: 1
 --- !u!1 &1771056462
 GameObject:
   m_ObjectHideFlags: 0

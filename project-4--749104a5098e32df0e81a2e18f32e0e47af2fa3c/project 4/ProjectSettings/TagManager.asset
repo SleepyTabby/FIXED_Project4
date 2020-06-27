@@ -16,6 +16,7 @@ TagManager:
   - ElectricBullet
   - Boss
   - KillingRoamer
+  - BulletFromBoss
   layers:
   - Default
   - TransparentFX
