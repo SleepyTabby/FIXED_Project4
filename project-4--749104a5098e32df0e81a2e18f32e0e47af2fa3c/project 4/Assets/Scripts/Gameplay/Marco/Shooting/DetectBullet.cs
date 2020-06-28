@@ -8,7 +8,6 @@ public class DetectBullet : MonoBehaviour
 
     public ArmorBar CheckArmorDMG;
 
-    public EnemyProjectile enemy;
 
     void OnTriggerEnter(Collider col)
     {
@@ -17,14 +16,25 @@ public class DetectBullet : MonoBehaviour
         {
             if (CheckArmorDMG.RemainingArmor >= 1)
             {
-                CheckArmorDMG.LoseArmor(20); 
+                CheckArmorDMG.LoseArmor(10); 
             }
             
             if (CheckArmorDMG.RemainingArmor <= 0)
             {
                 DealDamage.LoseHealth(20);
             }
-            
+        }
+        else if (col.gameObject.tag == "BulletFromBoss")
+        {
+            if (CheckArmorDMG.RemainingArmor >= 1)
+            {
+                CheckArmorDMG.LoseArmor(10);
+            }
+
+            if (CheckArmorDMG.RemainingArmor <= 0)
+            {
+                DealDamage.LoseHealth(15);
+            }
         }
     }
 }

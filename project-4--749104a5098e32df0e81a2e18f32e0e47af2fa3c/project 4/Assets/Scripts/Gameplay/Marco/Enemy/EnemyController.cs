@@ -7,7 +7,8 @@ public enum EnemyState
 {
     roaming,
     attacking,
-    gettingShot
+    gettingShot,
+    vulnrable
 };
 public class EnemyController : MonoBehaviour
 {
@@ -95,7 +96,13 @@ public class EnemyController : MonoBehaviour
 
             shoot.ShootAtPlayer();
         }
-        if (state == EnemyState.roaming)
+        if (state == EnemyState.vulnrable && Input.GetKey(KeyCode.V))
+        {
+            float MeleeHealthReduce = (enemyHealth.EnemyHealthslider.value / 4) * 3;
+            int meleeDMG = Mathf.RoundToInt(MeleeHealthReduce);
+            enemyHealth.ReduceEnemyHealth(meleeDMG);
+        }
+        if (state == EnemyState.roaming || state == EnemyState.vulnrable)
         {
             agent.speed = roamingSpeed;
 

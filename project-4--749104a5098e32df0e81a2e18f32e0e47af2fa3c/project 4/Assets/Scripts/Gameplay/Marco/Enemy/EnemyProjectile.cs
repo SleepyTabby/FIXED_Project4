@@ -18,7 +18,10 @@ public class EnemyProjectile : MonoBehaviour
         firingPoint = transform;
     }
 
-    
+    private void DestroyThisBullet()
+    {
+        Destroy(this.gameObject);
+    }
     void Update()
     {
         //
@@ -31,10 +34,12 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    
 
-    public void DestroyBullet()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        if (other.gameObject.tag == "Wall")
+        {
+            DestroyThisBullet();
+        }
     }
 }

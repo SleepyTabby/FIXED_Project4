@@ -17,10 +17,10 @@ public class Boss : MonoBehaviour
 {
     [Header("BossHealth")]
     [SerializeField] float healthRegen;
-    //[Header("BossHealth")]
-    //[SerializeField] HealthbarEnemy 
+    [Header("BossHealth")]
+    [SerializeField] GameObject HealthbarBoss;
     [Header("CurrentBossStage")]
-    [SerializeField] BossStage currentStage;
+    public BossStage currentStage;
     public BossHealthBar bossHealth;
     bool startBossBattle;
     NavMeshAgent agent;
@@ -56,20 +56,17 @@ public class Boss : MonoBehaviour
     int count;
     private void Update()
     {
-        if (startBossBattle)
-        {
-            FaceTarget();
-        }
         if(currentStage == BossStage.detectedPlayer)
         {
             startBossBattle = true;
+            currentStage = BossStage.StageOne;
         }
         if (startBossBattle)
         {
             FaceTarget();
             agent.SetDestination(target.position);
         }
-        if (bossHealth.BossHealthsliderOne.value >= 0)
+        if (bossHealth.BossHealthsliderOne.value >= 0 && currentStage == BossStage.StageOne)
         {
             currentStage = BossStage.StageOne;
 
@@ -92,6 +89,20 @@ public class Boss : MonoBehaviour
                 currentStage = BossStage.StageFour;
             }
         }
+        if (bossHealth.BossHealthsliderTwo.value <= 0 && bossHealth.BossHealthsliderOne.value <= 0)
+        {
+            if (bossHealth.BossHealthsliderThree.value <= 0 && bossHealth.BossHealthsliderFour.value <= 0)
+            {
+                Destroy(this.gameObject);
+                HealthbarBoss.SetActive(false);
+                FallingDebris.SetActive(false);
+            }
+        }
+        if (startBossBattle)
+        {
+            HealthbarBoss.SetActive(true);
+            FallingDebris.SetActive(true);
+        }
     }
     //stoppingDistance 
     private void OnTriggerEnter(Collider col)
@@ -106,88 +117,47 @@ public class Boss : MonoBehaviour
     {
         if (currentStage == BossStage.StageOne)
         {
-            PatternOne();
-        }
-        if (currentStage == BossStage.StageTwo)
-        {
-            if(count == 0)
+            agent.stoppingDistance = 8;
+            if (count == 0)
             {
-                PatternOne();
+                PatternThree();
             }
             if(count == 1)
             {
-                PatternTwo();
+                PatternFour();
             }
-            if (count >= 2)
+            else
             {
                 count = 0;
             }
-        }
-        if (currentStage == BossStage.StageThree)
-        {
-            if (count == 0)
-            {
-                PatternOne();
-            }
-            if (count == 1)
-            {
-                PatternTwo();
-            }
-            if( count == 2)
-            {
-                PatternThree();
-            }
-            if (count == 3)
-            {
-                PatternThree();
-            }
-            if (count >= 4)
-            {
-                count = 0;
-            }
-        }
-        if (currentStage == BossStage.StageThree)
-        {
             
-            if (count == 0)
-            {
-                fireSpeed = 1;
-                PatternOne(); // faster
+        }
+        if (currentStage == BossStage.StageTwo)
+        {
+            PatternTwo();
+            agent.stoppingDistance = 7;
 
-            }
-            if (count == 1)
-            {
-                fireSpeed = 1f;
-                PatternTwo();
-            }
-            if (count == 2)
-            {
-                fireSpeed = 1f;
-                PatternThree();
-            }
-            if (count >= 3)
-            {
-                count = 0;
-            }
+        }
+        if (currentStage == BossStage.StageThree)
+        {
+            agent.stoppingDistance = 8;
+            PatternOne();
         }
         if (currentStage == BossStage.StageFour)
         {
-            fireSpeed = 1f;
-            PatternThree();
-
-            PatternFour();
-
-            fireSpeed = 1f;
+            
+            agent.stoppingDistance = 10;
+            PatternTwo();
+            PatternOne();
             if (count == 0)
             {
-                PatternOne(); // faster
-
+                PatternThree();
             }
             if (count == 1)
             {
-                PatternTwo();
+                PatternFour();
             }
-            if (count >= 2)
+            else
             {
                 count = 0;
             }
@@ -212,20 +182,24 @@ public class Boss : MonoBehaviour
     int counterOne;
     void PatternTwo()
     {
-        if (counterOne <= 0)
+        if (TimeBetweenShots + fireSpeed <= Time.time)
         {
-            EvenShooting();
-            UnEvenShooting();
-        }
-        if (counterOne < 30)
-        {
-            counterOne++;
-        }
-        else if (counterOne >= 30)
-        {
-            SlightShooting();
-            counterOne = 0;
-            count++;
+            if (counterOne <= 0)
+            {
+                EvenShooting();
+                UnEvenShooting();
+            }
+            if (counterOne < 30)
+            {
+                counterOne++;
+            }
+            else if (counterOne >= 30)
+            {
+                SlightShooting();
+                counterOne = 0;
+                count++;
+                TimeBetweenShots = Time.time;
+            }
         }
 
 
