@@ -65,10 +65,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        
         if (Enemyhealth <= 0)
         {
-            FindObjectOfType<PlayerStatistics>().Kills++;
             Destroy(this.gameObject);
         }
 
