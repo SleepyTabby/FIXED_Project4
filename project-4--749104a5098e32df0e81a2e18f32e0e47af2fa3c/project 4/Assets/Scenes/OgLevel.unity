@@ -84778,7 +84778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  desiredAngle: 90
+  desiredAngle: 270
   neutralAngle: 0
   angle: 0
   direction: {x: 0, y: 0, z: 0}

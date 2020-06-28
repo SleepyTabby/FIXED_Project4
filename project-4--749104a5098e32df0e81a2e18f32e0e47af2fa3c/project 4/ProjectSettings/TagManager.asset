@@ -17,6 +17,7 @@ TagManager:
   - Boss
   - KillingRoamer
   - BulletFromBoss
+  - MiniGunBullet
   layers:
   - Default
   - TransparentFX
