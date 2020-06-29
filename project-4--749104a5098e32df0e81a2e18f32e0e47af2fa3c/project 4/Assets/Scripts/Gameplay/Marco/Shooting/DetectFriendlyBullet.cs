@@ -8,7 +8,11 @@ public class DetectFriendlyBullet : MonoBehaviour
     public EnemyHealthBar enemyHealth;
     void OnTriggerEnter(Collider col)
     {
-
+        if(col.gameObject.tag == "MiniGunBullet")
+        {
+            DealDamage.Enemyhealth -= 35;
+            enemyHealth.SetEnemyHealth(DealDamage.Enemyhealth);
+        }
         if (col.gameObject.tag == "Bullet")
         {
             DealDamage.Enemyhealth -= 20;
