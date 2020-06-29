@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class lift : MonoBehaviour
+public class lift1 : MonoBehaviour
 {
     public float timer;
     void Start()
@@ -16,7 +16,7 @@ public class lift : MonoBehaviour
 
         if (timer <= 0)
         {
-            SceneManager.LoadScene("OgLevel");
+            SceneManager.LoadScene("FinalLevel");
         }
     }
 }

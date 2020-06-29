@@ -54025,6 +54025,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 225561292277860796, guid: b908127c3af5ed846b08cb6931b9d8f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 225561292277860799, guid: b908127c3af5ed846b08cb6931b9d8f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54083,7 +54088,7 @@ PrefabInstance:
     - target: {fileID: 7265083847410591648, guid: b908127c3af5ed846b08cb6931b9d8f7,
         type: 3}
       propertyPath: targetScene
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b908127c3af5ed846b08cb6931b9d8f7, type: 3}
